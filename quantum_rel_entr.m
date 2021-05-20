@@ -40,6 +40,13 @@ if nargin == 2
     k = 3;
 end
 
+% Added by Mahathi
+% Ensuring that A and B are NOT SPARSE matrices
+%-----------------------------
+A = full(A)
+B = full(B)
+%-----------------------------
+
 if isnumeric(A) && isnumeric(B)
     % Compute trace(A*(logm(A)-logm(B)))
     tol = 1e-9;
