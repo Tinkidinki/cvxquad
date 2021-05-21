@@ -40,6 +40,13 @@ else
     if size(C,1) ~= size(C,2) || size(C,1) ~= size(X,1)
         error('C must be a positive semidefinite matrix of the same size as X');
     end
+
+    % Added by Mahathi
+    % Somehow this converts C to numeric type in case it is of cvx_constant type
+    %--------------------------------------------------
+    C = cvx_constant(C)
+    %--------------------------------------------------
+
     C = (C+C')/2;
     e = eig(C);
     tol = 1e-9;
